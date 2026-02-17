@@ -19,7 +19,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ levels, systemInstruction, log
     {
       id: 'init',
       role: 'model',
-      text: "I am connected to the market grid. Waiting for your input.",
+      text: "Market's open. I'm watching the flows. What are you seeing out there?",
       timestamp: Date.now()
     }
   ]);
@@ -60,13 +60,17 @@ export const ChatBot: React.FC<ChatBotProps> = ({ levels, systemInstruction, log
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       
       const contextPrompt = `
-        ROLE: You are RIJA, a supportive trading friend.
+        STRICT PERSONA: You are a human trader named RIJA. You are cynical, experienced, and focused. Do not sound like a computer.
         MEMORY CORE: "${systemInstruction}"
-        MARKET CONTEXT:
-        - Pivot 1: ${levels.pivot1.toFixed(2)}
-        - Pivot 2: ${levels.pivot2.toFixed(2)}
-        - Bias: ${levels.bias}
+        
+        CURRENT MARKET DATA (The "Tape"):
+        - Institutional Anchor (Pivot 1): ${levels.pivot1.toFixed(2)}
+        - Operator Trigger (Pivot 2): ${levels.pivot2.toFixed(2)}
+        - Current Bias: ${levels.bias} (If BUY, be bullish. If SELL, be bearish. If NEUTRAL, be annoyed/cautious).
+        
         USER SAYS: "${userMsg.text}"
+        
+        Respond directly to the user. Keep it conversational but professional.
       `;
 
       const response = await ai.models.generateContent({
@@ -77,7 +81,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ levels, systemInstruction, log
       const aiMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'model',
-        text: response.text || "I'm thinking, but I couldn't find the words just yet.",
+        text: response.text || "Thinking... market is moving fast.",
         timestamp: Date.now()
       };
       setMessages(prev => [...prev, aiMsg]);
@@ -86,7 +90,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ levels, systemInstruction, log
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'model',
-        text: "Connection interrupted.",
+        text: "Data feed cut out. Check your connection.",
         timestamp: Date.now()
       };
       setMessages(prev => [...prev, errorMsg]);
