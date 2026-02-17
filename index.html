@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NIFTY Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              rh: {
+                green: '#00C805', // Robinhood Neon Green
+                black: '#000000', // Deep Black Background
+                surface: '#1E2124', // Card Background (Dark Charcoal)
+                surfaceHighlight: '#2A2E33', // Hover state
+                text: '#FFFFFF',
+                subtext: '#B5B5B5',
+                border: '#30363A', // Subtle dark border
+                red: '#FF5000', // Robinhood Red/Orange
+              },
+              // Mapping old vars to new dark theme
+              bauhaus: {
+                bg: '#000000',
+                fg: '#FFFFFF',
+                red: '#FF5000',
+                blue: '#00C805',
+                yellow: '#00C805',
+                muted: '#1E2124',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Menlo', 'Monaco', 'Courier New', 'monospace'],
+            },
+            boxShadow: {
+              'glow-green': '0 0 20px rgba(0, 200, 5, 0.15)',
+              'glow-red': '0 0 20px rgba(255, 80, 0, 0.15)',
+              'soft': '0 4px 20px rgba(0,0,0,0.4)',
+            },
+            borderRadius: {
+              'xl': '1rem',
+              '2xl': '1.5rem',
+              '3xl': '2rem',
+              '4xl': '2.5rem',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #000000;
+        color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Dark Modern scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/package/xlsx.mjs",
+    "motion/react": "https://esm.sh/motion@12.4.2/react",
+    "clsx": "https://esm.sh/clsx",
+    "tailwind-merge": "https://esm.sh/tailwind-merge",
+    "motion/": "https://esm.sh/motion@^12.34.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
